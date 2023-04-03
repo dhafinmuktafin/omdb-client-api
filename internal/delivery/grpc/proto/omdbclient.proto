@@ -1,0 +1,66 @@
+syntax = "proto3";
+package omdbClient;
+option go_package = "./";
+
+service omdbClient {
+  rpc GetMovieListByKeyword(GetMovieByKeywordRequest) returns (GetMovieByKeywordResponse);
+  rpc GetMovieByMovieId(GetMovieByMovieIdRequest) returns (GetMovieByMovieIdResponse);
+}
+
+message GetMovieByKeywordRequest{
+  int64 Page = 1;
+  string Keyword = 2;
+}
+
+message GetMovieByKeywordResponse {
+
+  message Search {
+    string Title = 1;
+    string Year = 2;
+    string imdbID = 3;
+    string Type = 4;
+    string Poster = 5;
+  }
+
+  repeated Search SearchList = 1;
+  string totalResults = 2;
+  string Response = 3;
+}
+
+message GetMovieByMovieIdRequest{
+  string MovieId = 1;
+}
+
+message GetMovieByMovieIdResponse {
+
+  message Rating {
+    string Source = 1;
+    string Value = 2;
+  }
+
+  string Title = 1;
+  string Year = 2;
+  string Rated = 3;
+  string Released = 4;
+  string Runtime = 5;
+  string Genre = 6;
+  string Director = 7;
+  string Writer = 8;
+  string Actors = 9;
+  string Plot = 10;
+  string Language = 11;
+  string Country = 12;
+  string Awards = 13;
+  string Poster = 14;
+  repeated Rating Ratings = 15;
+  string Metascore = 16;
+  string imdbRating = 17;
+  string imdbVotes = 18;
+  string imdbID = 19;
+  string Type = 20;
+  string DVD = 21;
+  string BoxOffice = 22;
+  string Production = 23;
+  string Website = 24;
+  string Response = 25;
+}

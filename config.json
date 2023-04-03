@@ -1,0 +1,14 @@
+{
+  "server": {
+    "port": "9090",
+    "grpcPort": "9191"
+  },
+  "context":{
+    "timeout":2
+  },
+  "database": {
+    "master": "${DB_URL_MASTER}",
+    "slave": "${DB_URL_SLAVE}"
+  }
+
+}
